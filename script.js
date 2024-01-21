@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const randomDayButton = document.querySelector('button#randomDay');
     const nextDayButton = document.querySelector('button#nextDay');
     const todayButton = document.querySelector('button#today');
+    const datePattern = /^\d{4}-\d{2}-\d{2}$/;
     const formatter = new Intl.NumberFormat('en-US', {
         notation: 'compact',
         compactDisplay: 'short'
@@ -110,10 +111,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function goToRandomDay() {
-        if (localStorage.length > 0) {
+        while (true) {
+            if (localStorage.length < 1) {
+                return;
+            }
             let randomIndex = Math.floor(Math.random() * localStorage.length);
-            currentDate = localStorage.key(randomIndex);
-            displayMessages(currentDate);
+            let randomKey = localStorage.key(randomIndex);
+            if (datePattern.test(randomKey)) {
+                currentDate = randomKey;
+                displayMessages(currentDate);
+                return;
+            }
         }
     }
 

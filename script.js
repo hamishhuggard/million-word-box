@@ -7,6 +7,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const randomDayButton = document.querySelector('button#randomDay');
     const nextDayButton = document.querySelector('button#nextDay');
     const todayButton = document.querySelector('button#today');
+    const formatter = new Intl.NumberFormat('en-US', {
+        notation: 'compact',
+        compactDisplay: 'short'
+    });
 
     sendButton.addEventListener('click', sendMessage);
     firstDayButton.addEventListener('click', goToFirstDay);
@@ -79,6 +83,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         document.getElementById('wordsToday').textContent = wordsToday;
         document.getElementById('totalWords').textContent = totalWords;
+
+        // Update the webpage title with the total word count
+        document.title = formatter.format(totalWords) + " Words";
     }
 
     // Navigation functions

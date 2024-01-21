@@ -1,17 +1,32 @@
 document.addEventListener('DOMContentLoaded', function() {
     let currentDate = new Date().toISOString().slice(0, 10);
+    const messageInput = document.getElementById('messageInput');
+    const sendButton = document.querySelector('button#send');
+    const firstDayButton = document.querySelector('button#firstDay');
+    const prevDayButton = document.querySelector('button#prevDay');
+    const randomDayButton = document.querySelector('button#randomDay');
+    const nextDayButton = document.querySelector('button#nextDay');
+    const todayButton = document.querySelector('button#today');
+
+    sendButton.addEventListener('click', sendMessage);
+    firstDayButton.addEventListener('click', goToFirstDay);
+    prevDayButton.addEventListener('click', goBackOneDay);
+    randomDayButton.addEventListener('click', goToRandomDay);
+    nextDayButton.addEventListener('click', goForwardOneDay);
+    todayButton.addEventListener('click', goToToday);
+
     displayMessages(currentDate);
     updateWordCounts();
 
     function sendMessage() {
-        let message = document.getElementById('messageInput').value;
+        let message = messageInput.value;
         if (message) {
             let messages = getMessagesForDate(currentDate);
             messages.push(message);
             localStorage.setItem(currentDate, JSON.stringify(messages));
             displayMessages(currentDate);
             updateWordCounts();
-            document.getElementById('messageInput').value = '';
+            messageInput.value = '';
         }
     }
 

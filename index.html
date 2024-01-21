@@ -7,17 +7,17 @@
 <body>
     <div id="chatArea"></div>
     <input type="text" id="messageInput" placeholder="Type your message here...">
-    <button onclick="sendMessage()">Send</button>
+    <button id="send">Send</button>
     <div>
         <p>Words today: <span id="wordsToday">0</span></p>
         <p>Total words: <span id="totalWords">0</span></p>
     </div>
     <div>
-        <button onclick="goToFirstDay()">First Day</button>
-        <button onclick="goBackOneDay()">Previous Day</button>
-        <button onclick="goToRandomDay()">Random Day</button>
-        <button onclick="goForwardOneDay()">Next Day</button>
-        <button onclick="goToToday()">Today</button>
+        <button id="firstDay">First Day</button>
+        <button id="prevDay">Previous Day</button>
+        <button id="randomDay">Random Day</button>
+        <button id="nextDay">Next Day</button>
+        <button id="today">Today</button>
     </div>
     <script src="script.js"></script>
 </body>

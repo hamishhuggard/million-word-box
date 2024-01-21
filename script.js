@@ -64,11 +64,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (date === present) {
             pastWordsElem.style.display = 'none'; // Hide the element
+            nextDayButton.style.display = 'none'; // Hide the element
+            todayButton.style.display = 'none'; // Hide the element
+            messageInput.style.display = 'inline'; // Hide the element
+            sendButton.style.display = 'inline'; // Hide the element
         } else {
             pastWordCount = messages.join(' ').split(' ').filter(Boolean).length;
             pastDateElem.textContent = date;
             pastWordCountElem.textContent = pastWordCount;;
             pastWordsElem.style.display = 'block'; // Show the element
+            nextDayButton.style.display = 'inline'; // Hide the element
+            todayButton.style.display = 'inline'; // Hide the element
+            messageInput.style.display = 'none'; // Hide the element
+            sendButton.style.display = 'none'; // Hide the element
         }
     }
 

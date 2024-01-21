@@ -47,6 +47,9 @@ document.addEventListener('DOMContentLoaded', function() {
         let messages = getMessagesForDate(date);
         let chatArea = document.getElementById('chatArea');
         chatArea.innerHTML = messages.map(msg => `<p>${msg}</p>`).join('');
+
+        // Scroll to the bottom of the chat area
+        chatArea.scrollTop = chatArea.scrollHeight;
     }
 
     function updateWordCounts() {

@@ -50,13 +50,32 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Scroll to the bottom of the chat area
         chatArea.scrollTop = chatArea.scrollHeight;
+
+        // Update the pastWords information
+        let present = new Date().toISOString().slice(0, 10);
+        let pastDateElem = document.getElementById('pastDate');
+        let pastWordsElem = document.getElementById('pastWords');
+        let pastWordCountElem = document.getElementById('pastWordCount');
+
+        if (date === present) {
+            pastWordsElem.style.display = 'none'; // Hide the element
+        } else {
+            pastWordCount = messages.join(' ').split(' ').filter(Boolean).length;
+            pastDateElem.textContent = date;
+            pastWordCountElem.textContent = pastWordCount;;
+            pastWordsElem.style.display = 'block'; // Show the element
+        }
     }
 
     function updateWordCounts() {
         let wordsToday = getMessagesForDate(currentDate).join(' ').split(' ').filter(Boolean).length;
         let totalWords = 0;
         for (let i = 0; i < localStorage.length; i++) {
-            totalWords += localStorage.getItem(localStorage.key(i)).split(' ').filter(Boolean).length;
+            let key = localStorage.key(i);
+            if (key !== "debug") {
+                let messages = JSON.parse(localStorage.getItem(key));
+                totalWords += messages.join(' ').split(' ').filter(Boolean).length;
+            }
         }
         document.getElementById('wordsToday').textContent = wordsToday;
         document.getElementById('totalWords').textContent = totalWords;

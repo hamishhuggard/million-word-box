@@ -15,11 +15,19 @@ document.addEventListener('DOMContentLoaded', function() {
     nextDayButton.addEventListener('click', goForwardOneDay);
     todayButton.addEventListener('click', goToToday);
 
+    // Add an event listener for keyup on the message input
+    messageInput.addEventListener('keyup', function(event) {
+        if (event.keyCode === 13) { // 32 is the keycode for the space bar
+            sendMessage();
+            event.preventDefault(); // Prevents the default space bar action (scrolling/page break)
+        }
+    });
+
     displayMessages(currentDate);
     updateWordCounts();
 
     function sendMessage() {
-        let message = messageInput.value;
+        let message = messageInput.value.trim(); // Trim to remove leading/trailing white spaces
         if (message) {
             let messages = getMessagesForDate(currentDate);
             messages.push(message);

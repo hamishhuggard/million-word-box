@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Add an event listener for keyup on the message input
     messageInput.addEventListener('keyup', function(event) {
-        if (event.keyCode === 13) { // 32 is the keycode for the space bar
+        if (event.keyCode === 13) { // 13 is the keycode for the enter key
             sendMessage();
             event.preventDefault(); // Prevents the default space bar action (scrolling/page break)
         }

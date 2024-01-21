@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Local Storage Chat</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div id="chatArea"></div>
+    <input type="text" id="messageInput" placeholder="Type your message here...">
+    <button onclick="sendMessage()">Send</button>
+    <div>
+        <p>Words today: <span id="wordsToday">0</span></p>
+        <p>Total words: <span id="totalWords">0</span></p>
+    </div>
+    <div>
+        <button onclick="goToFirstDay()">First Day</button>
+        <button onclick="goBackOneDay()">Previous Day</button>
+        <button onclick="goToRandomDay()">Random Day</button>
+        <button onclick="goForwardOneDay()">Next Day</button>
+        <button onclick="goToToday()">Today</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
